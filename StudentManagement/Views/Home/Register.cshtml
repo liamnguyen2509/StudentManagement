@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Register Student";
+}
+
+<div class="page-content">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="@Url.Action("Index", "Home")">Home</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="#">Students</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-paper-plane"></i>Register Student
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            <form method="post" class="form-horizontal" id="fm_addStudent">
+                <div class="form-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">NRIC <span class="required">*</span></label>
+                        <div class="col-sm-4">
+                            <input type="text" name="NRIC" class="form-control" placeholder="S1234567A" maxlength="10">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Name <span class="required">*</span></label>
+                        <div class="col-sm-4">
+                            <input type="text" name="StudentName" class="form-control" placeholder="Student Name" value="" maxlength="50">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Gender <span class="required">*</span></label>
+                        <div class="col-sm-4">
+                            <select id="select2_gender" class="form-control" name="Gender">
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Birthday <span class="required">*</span></label>
+                        <div class="col-sm-4">
+                            <input type="text" name="DOB" class="form-control date-picker" style="cursor: pointer" placeholder="Date of Birth" data-format="dd/mm/yyyy" value="" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Available Date</label>
+                        <div class="col-sm-4">
+                            <input type="text" name="AvailableDate" class="form-control date-picker" style="cursor: pointer" placeholder="Available Date" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Subjects</label>
+                        <div class="col-sm-4">
+                            <select id="select2_subjects" class="form-control" name="SubjectIds" multiple="multiple" data-url="@Url.Action("GetSubjects","Home")"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions fluid">
+                    <div class="row">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn green">Submit</button>
+                            <a href="@Url.Action("Index")"><button type="button" class="btn default">Cancel</button></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- END FORM-->
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="@Url.Content("~/Content/assets/global/plugins/select2/select2.min.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js")"></script>
+}
+
+@section pageScripts{
+    <script src="@Url.Content("~/Scripts/pages/students.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            STUDENTS.url_register = "@Url.Action("Register", "Home")";
+            STUDENTS.url_index = "@Url.Action("Index", "Home")";
+            STUDENTS.init_register_form();
+        });
+    </script>
+}
+

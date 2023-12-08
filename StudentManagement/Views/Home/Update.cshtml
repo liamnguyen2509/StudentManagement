@@ -1,0 +1,112 @@
+﻿@using Newtonsoft.Json
+@model StudentManagement.App.ViewModels.StudentUpdateVM
+@{
+    ViewBag.Title = "Edit Student";
+}
+
+<div class="page-content">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="@Url.Action("Index", "Home")">Home</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="#">Students</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-paper-plane"></i>Update Student
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            <form method="post" class="form-horizontal" id="fm_editStudent">
+                <div class="form-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">NRIC <span class="required">*</span></label>
+                        <div class="col-sm-4">
+                            <input type="hidden" name="StudentId" value="@Model.StudentId" />
+                            <input type="text" name="NRIC" class="form-control" placeholder="S1234567A" maxlength="10" value="@Model.NRIC">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Name <span class="required">*</span></label>
+                        <div class="col-sm-4">
+                            <input type="text" name="StudentName" class="form-control" placeholder="Student Name" maxlength="50" value="@Model.StudentName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Gender <span class="required">*</span></label>
+                        <div class="col-sm-4">
+                            <select id="select2_gender" class="form-control" name="Gender">
+                                @if (Model.Gender == "M")
+                                {
+                                    <option value="M" selected="selected">Male</option>
+                                    <option value="F">Female</option>
+                                }
+                                else
+                                {
+                                    <option value="M">Male</option>
+                                    <option value="F" selected="selected">Female</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Birthday <span class="required">*</span></label>
+                        <div class="col-sm-4">
+                            <input type="text" name="DOB" class="form-control date-picker" style="cursor: pointer" placeholder="Date of Birth" data-format="dd/mm/yyyy" value="@Model.DOB.ToString("dd/MM/yyyy")" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Available Date</label>
+                        <div class="col-sm-4">
+                            <input type="text" name="AvailableDate" class="form-control date-picker" style="cursor: pointer" placeholder="Available Date" value="@(Model.AvailableDate.HasValue ? Model.AvailableDate.Value.ToString("dd/MM/yyyy") : "")">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Subjects</label>
+                        <div class="col-sm-4">
+                            <input type="hidden" id="selected-subjects" value="@JsonConvert.SerializeObject(Model.Subjects.Select(a => new { name = a.SubjectName, id = a.SubjectId.ToString() }).ToList())" />
+                            <select id="select2_subjects" class="form-control" name="SubjectIds" multiple="multiple" data-url="@Url.Action("GetSubjects","Home")"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions fluid">
+                    <div class="row">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn green">Submit</button>
+                            <a href="@Url.Action("Index")"><button type="button" class="btn default">Cancel</button></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- END FORM-->
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="@Url.Content("~/Content/assets/global/plugins/select2/select2.min.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js")"></script>
+}
+
+@section pageScripts{
+    <script src="@Url.Content("~/Scripts/pages/student-edit.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            STUDENTEDIT.url_update = "@Url.Action("Update", "Home")";
+            STUDENTEDIT.url_index = "@Url.Action("Index", "Home")";
+            STUDENTEDIT.init_edit_form();
+        });
+    </script>
+}
+
