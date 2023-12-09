@@ -22,6 +22,11 @@ Student Management is a practice project. It enable student can register and we 
 * AutoMapper for mapping Entities with ViewModels
 * Serilog for write logs to Database
 
+## Version Control
+* GitFlow
+  
+![image](https://github.com/liamnguyen2509/StudentManagement/assets/116966588/5d17507a-951f-4f8e-b5f5-71cc8f3f8ec2)
+
 ## Prerequisites
 Before you begin, ensure you have met the following requirements:
 * You have installed the [.NET Framework 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net481)
