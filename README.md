@@ -1,14 +1,17 @@
 # Student Management
+![logo](https://github.com/liamnguyen2509/StudentManagement/assets/116966588/81a31d20-6bbb-4e90-aae8-30acdf7c1646)
 
 Student Management is a practice project. It enable student can register and we manage the student list.
 
 ## Architect layers
 - Repository pattern (apply clean architect)
 - Layers:
-  - Application: Contains View and Controller and configuration for Web App
+  - App: Contains View and Controller and configuration for Web App
   - Services: Contains Business function as Service class 
   - Repositories: Contains list of Domain Entities, Repository and IoC Unit Of Work Pattern
-  - UnitTest: Implement Unit Testing for Service class layer  
+  - UnitTest: Implement Unit Testing for Service class layer
+
+![image](https://github.com/liamnguyen2509/StudentManagement/assets/116966588/44f68fea-04d0-454b-a10b-776aa01a30ba)
 
 ## Built With
 * [Bootstrap](https://getbootstrap.com)
@@ -46,7 +49,13 @@ git clone https://github.com/liamnguyen2509/StudentManagement.git
 Update-Database -verbose
 ```
 6. Go to your local database and check is there new Database name StudentDB and data for Subjects
-7. Set Start up project is StudentManagement.App and run project as IISExpress
+
+  ![image](https://github.com/liamnguyen2509/StudentManagement/assets/116966588/1a7c8c92-1880-4f4e-b5bf-664199045502) ![image](https://github.com/liamnguyen2509/StudentManagement/assets/116966588/1cb2317d-0156-420a-9d01-6bb30bcf952e)
+
+8. Set Start up project is StudentManagement.App and run project as IISExpress
+![image](https://github.com/liamnguyen2509/StudentManagement/assets/116966588/d893b308-3181-4c2a-8d20-7125a4c3a15c)
+![image](https://github.com/liamnguyen2509/StudentManagement/assets/116966588/64a56462-e599-42fd-ae26-0f8a8390c76c)
+
 
 ## Contributing
 
@@ -54,6 +63,7 @@ Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
+![image](https://github.com/liamnguyen2509/StudentManagement/assets/116966588/c2f029c6-9774-4e20-a666-cd5a952743dd)
 
 ## License
 
